@@ -126,7 +126,12 @@ running it locally.
    folder as `<slug>-storyboard.jpg` and tell them to open it there. Ask the free247editor
    questions as multiple choice. If they answer with a request instead (send the transcript,
    fix a word), do that first. A request is not a "go".
-5. **Render only on "go".** Copy the draft to `outbox/<slug>-v1.mp4` and into the cloud folder
+5. **Render only on "go", at best quality.** Every draft is rendered as if it were the
+   final, since an approved draft is never re-rendered. Use HyperFrames `--quality high` and
+   H.264 `-crf 16 -preset slow -pix_fmt yuv420p` with AAC 256k and `-movflags +faststart`
+   for the delivered MP4, and `-crf 14` or lower for intermediate files. Re-encode as few
+   times as the edit allows, and work from the full-resolution source at 1080x1920, 30 fps.
+   Copy the draft to `outbox/<slug>-v1.mp4` and into the cloud folder
    under the same name. Never overwrite or rename their raw files.
 6. **Confirm it is online before you give a link.** A 50 MB draft takes about a minute to
    upload. With a connector, search for the exact file name until it appears, then give its
@@ -135,8 +140,9 @@ running it locally.
 7. **Report in 3 to 5 bullets:** the link, the length before and after, and what you changed.
    Say what you checked and what you didn't.
 8. **Notes become `-v2`, `-v3`,** saved to the folder the same way. Keep earlier versions so
-   they can compare. When they say it is done and not to render or upload again, stop: the
-   last draft is the final.
+   they can compare. When they approve ("ok na", "approved", "goods na"), stop: the latest
+   draft is the final. Don't render or upload a separate final version unless they ask for
+   one, even if the free247editor skill says to.
 
 ## Quality checks
 
